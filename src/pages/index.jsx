@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const Index = () => (
   <div className="min-h-screen flex sm:items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>weather-app</title>
+    </Helmet>
     <div className="max-w-md w-full space-y-4">
       <h1 className="title">weather-app</h1>
       <input
@@ -47,7 +52,7 @@ const Index = () => (
           </div>
           <Link
             to="/weather"
-            className="mt-4 sm:mt-0 w-full sm:w-auto h-10 inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            className="btn btn-primary mt-4 sm:mt-0 w-full sm:w-auto"
           >
             Continue
           </Link>
