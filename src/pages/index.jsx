@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 const Index = () => (
-  <div className="min-h-screen flex sm:items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div className="min-h-screen flex sm:items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div className="max-w-md w-full space-y-4">
-      <h1 className="text-3xl font-extrabold text-gray-900">weather-app</h1>
+      <h1 className="title">weather-app</h1>
       <input
         disabled
         type="text"
@@ -14,7 +14,7 @@ const Index = () => (
         value="Halifax, Nova Scotia"
       />
       <div>
-        <h2 className="font-semibold text-gray-900">Units</h2>
+        <h2 className="font-semibold">Units</h2>
         <div className="sm:flex justify-between items-center">
           <div>
             <div className="flex space-x-4 sm:block sm:space-x-0">
