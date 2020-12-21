@@ -18,4 +18,12 @@ body {
   @apply shadow-sm text-white bg-green-500 hover:bg-green-600 focus:ring-green-500;
 }
 
+.accordion-btn {
+  @apply py-4 w-full flex justify-between items-center hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
+}
+
+.secondary-icon {
+  @apply w-6 h-6 text-gray-400 transform transition-transform;
+}
+
 @tailwind utilities;
