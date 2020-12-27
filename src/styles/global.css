@@ -19,7 +19,7 @@ body {
 }
 
 .btn-secondary {
-  @apply text-gray-700 bg-white border-gray-300 hover:bg-gray-50 focus:ring-green-500;
+  @apply text-gray-700 bg-white border-gray-300 hover:bg-gray-100 focus:ring-green-500;
 }
 
 .accordion-btn {

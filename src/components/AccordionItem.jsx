@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import DataEntry from './DataEntry'
-import CloudIcon from '../icons/cloudy.svg'
+import CloudIcon from '../icons/wi-cloudy.svg'
 import ChevronIcon from '../icons/chevron.svg'
 
 const AccordionItem = ({ dayOfTheWeek, calendarDate }) => {

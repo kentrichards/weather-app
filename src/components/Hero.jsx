@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CloudIcon from '../icons/cloudy.svg'
+import CloudIcon from '../icons/wi-cloudy.svg'
 
 const Hero = () => (
   <div className="p-4 mt-4 w-full h-64 shadow rounded bg-gray-900">
