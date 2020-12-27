@@ -3,7 +3,7 @@
 @tailwind components;
 
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-gray-100 text-gray-900;
 }
 
 .title {
@@ -23,7 +23,7 @@ body {
 }
 
 .accordion-btn {
-  @apply py-4 w-full flex justify-between items-center hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
+  @apply py-4 w-full flex justify-between items-center hover:bg-white focus:outline-none focus:bg-white;
 }
 
 .secondary-icon {

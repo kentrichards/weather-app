@@ -25,26 +25,26 @@ const Index = () => (
             <div className="flex space-x-4 sm:block sm:space-x-0">
               <div className="flex items-center">
                 <input
-                  className="text-green-500 focus:ring-green-500"
+                  className="cursor-pointer text-green-500 focus:ring-green-500"
                   type="radio"
                   name="unit-select"
                   id="metric"
                   value="metric"
                   checked
                 />
-                <label className="ml-2" htmlFor="metric">
+                <label className="ml-2 cursor-pointer" htmlFor="metric">
                   Metric
                 </label>
               </div>
               <div className="flex items-center">
                 <input
-                  className="text-green-500 focus:ring-green-500"
+                  className="cursor-pointer text-green-500 focus:ring-green-500"
                   type="radio"
                   name="unit-select"
                   id="imperial"
                   value="imperial"
                 />
-                <label className="ml-2" htmlFor="imperial">
+                <label className="ml-2 cursor-pointer" htmlFor="imperial">
                   Imperial
                 </label>
               </div>
