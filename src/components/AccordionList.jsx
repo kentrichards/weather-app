@@ -1,23 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import AccordionItem from './AccordionItem'
 
-const AccordionList = () => (
+const AccordionList = ({ weeklyWeather }) => (
   <div>
     <h2 className="title">This Week</h2>
     <ul className="divide-y divide-gray-200">
-      <AccordionItem dayOfTheWeek="Sunday" calendarDate="December 20th, 2020" />
-      <AccordionItem dayOfTheWeek="Monday" calendarDate="December 21st, 2020" />
-      <AccordionItem
-        dayOfTheWeek="Tuesday"
-        calendarDate="December 22nd, 2020"
-      />
-      <AccordionItem
-        dayOfTheWeek="Wednesday"
-        calendarDate="December 23rd, 2020"
-      />
+      <AccordionItem dailyWeather={weeklyWeather[1]} />
+      <AccordionItem dailyWeather={weeklyWeather[2]} />
+      <AccordionItem dailyWeather={weeklyWeather[3]} />
+      <AccordionItem dailyWeather={weeklyWeather[4]} />
+      <AccordionItem dailyWeather={weeklyWeather[5]} />
     </ul>
   </div>
 )
+
+AccordionList.propTypes = {
+  weeklyWeather: PropTypes.arrayOf(
+    PropTypes.shape({
+      dt: PropTypes.number.isRequired
+    })
+  ).isRequired
+}
 
 export default AccordionList

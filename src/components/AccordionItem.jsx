@@ -1,12 +1,38 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import DataEntry from './DataEntry'
-import CloudIcon from '../icons/wi-cloudy.svg'
-import ChevronIcon from '../icons/chevron.svg'
+import Format from '../utils/Format'
 
-const AccordionItem = ({ dayOfTheWeek, calendarDate }) => {
+import DataEntry from './DataEntry'
+import ChevronIcon from '../icons/chevron.svg'
+import WeatherIcon from './WeatherIcon'
+
+const AccordionItem = ({ dailyWeather }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  // Extract relevant variables
+  const { dt, temp, weather, pop } = dailyWeather
+
+  // Transform raw data into presentable strings
+  const date = new Date(dt * 1000)
+  const dayOfTheWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
+  const calendarDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+
+  const lowestTemperature = Format.temperature(temp.max, 'celsius')
+  const highestTemperature = Format.temperature(temp.min, 'celsius')
+
+  const precipitation = Format.precipitation(pop)
+  const humidity = Format.humidity(dailyWeather.humidity)
+
+  const sunrise = Format.hour(dailyWeather.sunrise)
+  const sunset = Format.hour(dailyWeather.sunset)
+
+  const windSpeed = Format.windSpeed(dailyWeather.wind_speed)
+  const windDirection = Format.windDirection(dailyWeather.wind_deg)
 
   return (
     <li>
@@ -16,7 +42,7 @@ const AccordionItem = ({ dayOfTheWeek, calendarDate }) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="inline-flex flex-grow">
-          <CloudIcon />
+          <WeatherIcon category={weather[0].main} />
           <div className="ml-3 text-left">
             <p className="text-sm font-medium">{dayOfTheWeek}</p>
             <p className="text-sm text-gray-500">{calendarDate}</p>
@@ -28,17 +54,17 @@ const AccordionItem = ({ dayOfTheWeek, calendarDate }) => {
       </button>
       {isOpen && (
         <div className="py-2 grid grid-cols-2 gap-5 sm:grid-cols-4">
-          <DataEntry label="High" value="12°C" />
-          <DataEntry label="Low" value="-3°C" />
+          <DataEntry label="High" value={highestTemperature} />
+          <DataEntry label="Low" value={lowestTemperature} />
 
-          <DataEntry label="Sunrise" value="7:56 am" />
-          <DataEntry label="Sunset" value="4:31 pm" />
+          <DataEntry label="Sunrise" value={sunrise} />
+          <DataEntry label="Sunset" value={sunset} />
 
-          <DataEntry label="Precipitation" value="12%" />
-          <DataEntry label="Humidity" value="39%" />
+          <DataEntry label="Precipitation" value={precipitation} />
+          <DataEntry label="Humidity" value={humidity} />
 
-          <DataEntry label="Wind Speed" value="11 km/h" />
-          <DataEntry label="Wind Direction" value="SW (220°)" />
+          <DataEntry label="Wind Speed" value={windSpeed} />
+          <DataEntry label="Wind Direction" value={windDirection} />
         </div>
       )}
     </li>
@@ -46,8 +72,22 @@ const AccordionItem = ({ dayOfTheWeek, calendarDate }) => {
 }
 
 AccordionItem.propTypes = {
-  dayOfTheWeek: PropTypes.string.isRequired,
-  calendarDate: PropTypes.string.isRequired
+  dailyWeather: PropTypes.shape({
+    dt: PropTypes.number.isRequired,
+    weather: PropTypes.shape({
+      main: PropTypes.string.isRequired
+    }).isRequired,
+    temp: PropTypes.shape({
+      min: PropTypes.number.isRequired,
+      max: PropTypes.number.isRequired
+    }).isRequired,
+    pop: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    sunrise: PropTypes.number.isRequired,
+    sunset: PropTypes.number.isRequired,
+    wind_speed: PropTypes.number.isRequired,
+    wind_deg: PropTypes.number.isRequired
+  }).isRequired
 }
 
 export default AccordionItem
