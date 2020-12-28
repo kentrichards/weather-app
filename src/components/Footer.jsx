@@ -20,7 +20,7 @@ const Footer = () => (
         />
       </svg>
     </Link>
-    <p className="text-gray-500 text-xs mt-2">
+    <p className="text-gray-500 text-xs my-2">
       Data retrieved from&nbsp;
       <a className="underline" href="https://openweathermap.org/api">
         OpenWeather

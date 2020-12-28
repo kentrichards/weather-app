@@ -49,7 +49,7 @@ const AccordionItem = ({ dailyWeather }) => {
           </div>
         </div>
         <ChevronIcon
-          className={isOpen ? 'secondary-icon' : 'secondary-icon -rotate-90'}
+          className={isOpen ? 'secondary-icon rotate-90' : 'secondary-icon'}
         />
       </button>
       {isOpen && (
