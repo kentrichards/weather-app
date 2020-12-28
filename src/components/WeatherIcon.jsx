@@ -30,7 +30,11 @@ const WeatherIcon = ({ category, styles }) => {
 
 WeatherIcon.propTypes = {
   category: PropTypes.string.isRequired,
-  styles: PropTypes.string.isRequired
+  styles: PropTypes.string
+}
+
+WeatherIcon.defaultProps = {
+  styles: 'h-10 w-10'
 }
 
 export default WeatherIcon
