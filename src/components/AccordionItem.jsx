@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import Format from '../utils/Format'
+import format from '../utils/format'
 
 import DataEntry from './DataEntry'
 import ChevronIcon from '../icons/chevron.svg'
@@ -22,17 +22,17 @@ const AccordionItem = ({ dailyWeather }) => {
     day: 'numeric'
   })
 
-  const lowestTemperature = Format.temperature(temp.max)
-  const highestTemperature = Format.temperature(temp.min)
+  const lowestTemperature = format.temperature(temp.max)
+  const highestTemperature = format.temperature(temp.min)
 
-  const precipitation = Format.precipitation(pop)
-  const humidity = Format.humidity(dailyWeather.humidity)
+  const precipitation = format.precipitation(pop)
+  const humidity = format.humidity(dailyWeather.humidity)
 
-  const sunrise = Format.hour(dailyWeather.sunrise)
-  const sunset = Format.hour(dailyWeather.sunset)
+  const sunrise = format.hour(dailyWeather.sunrise)
+  const sunset = format.hour(dailyWeather.sunset)
 
-  const windSpeed = Format.windSpeed(dailyWeather.wind_speed)
-  const windDirection = Format.windDirection(dailyWeather.wind_deg)
+  const windSpeed = format.windSpeed(dailyWeather.wind_speed)
+  const windDirection = format.windDirection(dailyWeather.wind_deg)
 
   return (
     <li>

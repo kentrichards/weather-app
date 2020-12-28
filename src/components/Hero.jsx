@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Format from '../utils/Format'
+import format from '../utils/format'
 
 import WeatherIcon from './WeatherIcon'
 
@@ -10,7 +10,7 @@ const Hero = ({ currentWeather }) => {
   const { temp, dt } = currentWeather
 
   // Make the data presentable
-  const temperature = Format.temperature(temp)
+  const temperature = format.temperature(temp)
   const temperatureStyle =
     temperature > 10 ? 'text-yellow-300' : 'text-blue-300'
 
