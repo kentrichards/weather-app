@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import debounce from 'lodash.debounce'
 
 const Index = () => {
   const [unitType, setUnitType] = useState('metric')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [queryResponse, setQueryResponse] = useState('')
+  const [hasErrors, setHasErrors] = useState(false)
 
   useEffect(() => {
     const savedUnits = localStorage.getItem('units')
@@ -19,6 +24,33 @@ const Index = () => {
     localStorage.setItem('units', event.target.value)
   }
 
+  const fetchPlace = async query => {
+    await fetch(
+      `${process.env.GEOCODE_URL}${query}.json?types=place&access_token=${process.env.GEOCODE_KEY}`
+    )
+      .then(response => response.json())
+      .then(result => setQueryResponse(result))
+      .catch(setHasErrors(true))
+  }
+
+  const delayedSearch = useCallback(
+    debounce(query => fetchPlace(query), 300),
+    []
+  )
+
+  useEffect(() => {
+    if (searchQuery.length >= 2) {
+      delayedSearch(searchQuery)
+    }
+
+    // Cancel pending function calls when the component unmounts
+    return delayedSearch.cancel
+  }, [searchQuery, delayedSearch])
+
+  const handleChange = event => {
+    setSearchQuery(event.target.value)
+  }
+
   return (
     <div className="min-h-screen flex sm:items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Helmet>
@@ -28,13 +60,21 @@ const Index = () => {
       <div className="max-w-md w-full space-y-4">
         <h1 className="title">weather-app</h1>
         <input
-          disabled
           type="text"
           name="location"
           id="location"
-          className="h-10 text-gray-500 focus:ring-green-500 focus:border-green-500 block w-full border-gray-300 rounded-md"
-          value="Halifax, Nova Scotia"
+          className="input"
+          value={searchQuery}
+          onChange={e => handleChange(e)}
+          placeholder="Toronto, Ontario"
         />
+        {queryResponse && queryResponse.features && (
+          <ul>
+            {queryResponse.features.map(place => (
+              <li key={place.id}>{place.place_name}</li>
+            ))}
+          </ul>
+        )}
         <div>
           <h2 className="font-semibold">Units</h2>
           <div className="sm:flex justify-between items-center">

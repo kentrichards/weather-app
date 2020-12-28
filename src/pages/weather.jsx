@@ -12,7 +12,7 @@ const Weather = () => {
     const units = localStorage.getItem('units') || 'metric'
 
     await fetch(
-      `${process.env.API_URL}&units=${units}&appid=${process.env.API_KEY}`
+      `${process.env.WEATHER_URL}&units=${units}&appid=${process.env.WEATHER_KEY}`
     )
       .then(response => response.json())
       .then(result => setWeatherData(result))
