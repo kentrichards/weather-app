@@ -9,7 +9,11 @@ const Weather = () => {
   const [hasErrors, setHasErrors] = useState(false)
 
   const fetchData = async () => {
-    await fetch(`${process.env.API_URL}&appid=${process.env.API_KEY}`)
+    const units = localStorage.getItem('units') || 'metric'
+
+    await fetch(
+      `${process.env.API_URL}&units=${units}&appid=${process.env.API_KEY}`
+    )
       .then(response => response.json())
       .then(result => setWeatherData(result))
       .catch(setHasErrors(true))

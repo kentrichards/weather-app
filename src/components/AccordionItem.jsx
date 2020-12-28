@@ -22,8 +22,8 @@ const AccordionItem = ({ dailyWeather }) => {
     day: 'numeric'
   })
 
-  const lowestTemperature = Format.temperature(temp.max, 'celsius')
-  const highestTemperature = Format.temperature(temp.min, 'celsius')
+  const lowestTemperature = Format.temperature(temp.max)
+  const highestTemperature = Format.temperature(temp.min)
 
   const precipitation = Format.precipitation(pop)
   const humidity = Format.humidity(dailyWeather.humidity)
@@ -74,9 +74,11 @@ const AccordionItem = ({ dailyWeather }) => {
 AccordionItem.propTypes = {
   dailyWeather: PropTypes.shape({
     dt: PropTypes.number.isRequired,
-    weather: PropTypes.shape({
-      main: PropTypes.string.isRequired
-    }).isRequired,
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired
+      })
+    ).isRequired,
     temp: PropTypes.shape({
       min: PropTypes.number.isRequired,
       max: PropTypes.number.isRequired

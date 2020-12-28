@@ -1,5 +1,6 @@
-const temperature = (temp, scale) => {
-  const unit = scale === 'celsius' ? '°C' : '°F'
+const temperature = temp => {
+  const units = localStorage.getItem('units') || 'metric'
+  const unit = units === 'metric' ? '°C' : '°F'
   return `${Math.round(temp)}${unit}`
 }
 
@@ -15,9 +16,15 @@ const hour = timestamp =>
     })
     .toLocaleLowerCase()
 
-const windSpeed = value =>
+const windSpeed = value => {
+  const units = localStorage.getItem('units') || 'metric'
+
   // Metric wind speed is provided as m/s, so we need to convert it to km/h
-  `${Math.round(value * 3.6)} km/h`
+  if (units === 'metric') return `${Math.round(value * 3.6)} km/h`
+
+  // Imperial wind speed is provided as m/h, so it can just be returned
+  return `${Math.round(value)} m/h`
+}
 
 const windDirection = degrees => {
   let direction = ''

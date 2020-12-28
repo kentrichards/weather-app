@@ -10,7 +10,7 @@ const Hero = ({ currentWeather }) => {
   const { temp, dt } = currentWeather
 
   // Make the data presentable
-  const temperature = Format.temperature(temp, 'celsius')
+  const temperature = Format.temperature(temp)
   const temperatureStyle =
     temperature > 10 ? 'text-yellow-300' : 'text-blue-300'
 
@@ -47,9 +47,11 @@ Hero.propTypes = {
   currentWeather: PropTypes.shape({
     temp: PropTypes.number.isRequired,
     dt: PropTypes.number.isRequired,
-    weather: PropTypes.shape({
-      main: PropTypes.string.isRequired
-    }).isRequired
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired
 }
 
