@@ -34,4 +34,12 @@ body {
   @apply w-6 h-6 text-gray-400 transform transition-transform;
 }
 
+.search-result {
+  @apply flex items-center truncate h-10 px-3 cursor-pointer hover:bg-gray-100;
+}
+
+.no-results {
+  @apply flex items-center truncate h-10 px-3;
+}
+
 @tailwind utilities;
