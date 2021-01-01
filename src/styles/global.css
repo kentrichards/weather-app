@@ -35,7 +35,7 @@ body {
 }
 
 .search-result {
-  @apply flex items-center truncate h-10 px-3 cursor-pointer hover:bg-gray-100;
+  @apply flex items-center truncate h-10 w-full px-3 cursor-pointer hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
 }
 
 .no-results {
