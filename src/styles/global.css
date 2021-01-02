@@ -10,10 +10,6 @@ body {
   @apply text-3xl font-extrabold;
 }
 
-.input-btn {
-  @apply h-10 px-3 rounded-md block w-full text-left text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500;
-}
-
 .btn {
   @apply h-10 inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
@@ -32,6 +28,25 @@ body {
 
 .secondary-icon {
   @apply w-6 h-6 text-gray-400 transform transition-transform;
+}
+
+/* Search */
+/* ------------------------------------------------------------------------- */
+.modal-content {
+  @apply absolute p-4 sm:p-8 rounded-md shadow-xl bg-white top-4 left-4 right-4 sm:top-24 sm:left-1/4 sm:right-1/4 xl:left-1/3 xl:right-1/3;
+}
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.25);
+  @apply fixed inset-0;
+}
+
+.input {
+  @apply h-10 rounded-md block w-full border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500;
+}
+
+.input-btn {
+  @apply h-10 px-3 rounded-md block w-full text-left text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500;
 }
 
 .search-result {
