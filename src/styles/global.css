@@ -10,8 +10,8 @@ body {
   @apply text-3xl font-extrabold;
 }
 
-.input {
-  @apply h-10 rounded-md block w-full border-gray-300 focus:ring-green-500 focus:border-green-500;
+.input-btn {
+  @apply h-10 px-3 rounded-md block w-full text-left text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500;
 }
 
 .btn {
