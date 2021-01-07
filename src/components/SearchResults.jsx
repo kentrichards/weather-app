@@ -2,11 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash.debounce'
 
-const SearchResults = ({ searchQuery }) => {
+const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
   const [queryResults, setQueryResults] = useState(null)
 
   const fetchResults = async q => {
-    const options = ['types=place', 'limit=10', 'access_token='].join('&')
+    const options = ['types=place', 'limit=4', 'access_token='].join('&')
     const url = process.env.GEOCODE_URL
     const key = process.env.GEOCODE_KEY
     const query = `${q}.json?`
@@ -30,14 +30,32 @@ const SearchResults = ({ searchQuery }) => {
     return delayedSearch.cancel
   }, [searchQuery, delayedSearch])
 
+  const selectLocation = data => {
+    const name = data.text
+    const longName = data.place_name
+    const latitude = data.center[1]
+    const longitude = data.center[0]
+
+    localStorage.setItem('name', name)
+    localStorage.setItem('latitude', latitude)
+    localStorage.setItem('longitude', longitude)
+
+    setLocationName(longName)
+    closeModal()
+  }
+
   return (
-    <>
+    <div>
       <hr className="border-gray-300" />
-      <ul>
-        {queryResults ? (
+      <ul className="max-h-72 overflow-y-auto">
+        {queryResults && queryResults.length !== 0 ? (
           queryResults.map(place => (
             <li key={place.id}>
-              <button className="search-result" type="button">
+              <button
+                onClick={() => selectLocation(place)}
+                className="search-result"
+                type="button"
+              >
                 {place.place_name}
               </button>
             </li>
@@ -47,12 +65,14 @@ const SearchResults = ({ searchQuery }) => {
         )}
       </ul>
       <hr className="border-gray-300" />
-    </>
+    </div>
   )
 }
 
 SearchResults.propTypes = {
-  searchQuery: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired,
+  setLocationName: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired
 }
 
 export default SearchResults

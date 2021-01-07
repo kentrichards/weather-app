@@ -3,18 +3,23 @@ import React, { useState } from 'react'
 import SearchModal from './SearchModal'
 
 const Search = () => {
+  const [locationName, setLocationName] = useState(null)
   const [showModal, setShowModal] = useState(false)
 
   return (
     <div>
       <button
         type="button"
-        className="input-btn"
+        className={locationName ? 'input-btn text-gray-900' : 'input-btn'}
         onClick={() => setShowModal(true)}
       >
-        Toronto, Ontario, Canada
+        {!locationName ? 'Search for a location' : locationName}
       </button>
-      <SearchModal showModal={showModal} setShowModal={setShowModal} />
+      <SearchModal
+        setLocationName={setLocationName}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   )
 }

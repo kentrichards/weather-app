@@ -4,7 +4,7 @@ const temperature = temp => {
   return `${Math.round(temp)}${unit}`
 }
 
-const precipitation = decimal => `${decimal * 100}%`
+const precipitation = decimal => `${Math.round(decimal * 100)}%`
 
 const humidity = value => `${value}%`
 

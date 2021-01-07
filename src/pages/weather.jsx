@@ -10,9 +10,12 @@ const Weather = () => {
 
   const fetchData = async () => {
     const units = localStorage.getItem('units') || 'metric'
+    const latitude = localStorage.getItem('latitude')
+    const longitude = localStorage.getItem('longitude')
+    const coordinates = `&lat=${latitude}&lon=${longitude}`
 
     await fetch(
-      `${process.env.WEATHER_URL}&units=${units}&appid=${process.env.WEATHER_KEY}`
+      `${process.env.WEATHER_URL}${coordinates}&units=${units}&appid=${process.env.WEATHER_KEY}`
     )
       .then(response => response.json())
       .then(result => setWeatherData(result))

@@ -13,7 +13,7 @@ const SearchHeading = ({ closeModal }) => (
       onClick={() => closeModal()}
       className="rounded hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
     >
-      <CloseIcon />
+      <CloseIcon className="w-6 h-6" />
     </button>
   </div>
 )
