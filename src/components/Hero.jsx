@@ -25,21 +25,19 @@ const Hero = ({ currentWeather }) => {
 
   return (
     <div className="p-4 mt-4 w-full h-64 shadow-lg rounded bg-white">
-      <div className="h-full flex justify-between">
-        <div className="h-full flex flex-col justify-between z-10">
+      <div className="h-full flex flex-col justify-between">
+        <div className="h-14 flex w-full justify-between ">
           <div>
             <p className="font-semibold text-2xl">{name}</p>
             <p className="text-gray-600 text-sm">{date}</p>
           </div>
-          <div>
-            <p className={`${temperatureStyle} text-8xl`}>{temperature}</p>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-end">
           <WeatherIcon
             category={currentWeather.weather[0].main}
-            styles="text-gray-800 h-full z-0"
+            styles="text-gray-800"
           />
+        </div>
+        <div>
+          <p className={`${temperatureStyle} text-8xl`}>{temperature}</p>
         </div>
       </div>
     </div>

@@ -7,11 +7,11 @@ const AccordionList = ({ weeklyWeather }) => (
   <div>
     <h2 className="title">This Week</h2>
     <ul className="divide-y divide-gray-200">
+      <AccordionItem dailyWeather={weeklyWeather[0]} />
       <AccordionItem dailyWeather={weeklyWeather[1]} />
       <AccordionItem dailyWeather={weeklyWeather[2]} />
       <AccordionItem dailyWeather={weeklyWeather[3]} />
       <AccordionItem dailyWeather={weeklyWeather[4]} />
-      <AccordionItem dailyWeather={weeklyWeather[5]} />
     </ul>
   </div>
 )

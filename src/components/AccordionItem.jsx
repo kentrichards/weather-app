@@ -16,11 +16,7 @@ const AccordionItem = ({ dailyWeather }) => {
   // Transform raw data into presentable strings
   const date = new Date(dt * 1000)
   const dayOfTheWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
-  const calendarDate = date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const calendarDate = format.calendarDate(date)
 
   const lowestTemperature = format.temperature(temp.max)
   const highestTemperature = format.temperature(temp.min)

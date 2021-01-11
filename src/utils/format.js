@@ -82,11 +82,31 @@ const windDirection = degrees => {
   return `${direction} (${degrees}°)`
 }
 
+const compareDates = (a, b) =>
+  a.getDate() === b.getDate() &&
+  a.getMonth() === b.getMonth() &&
+  a.getFullYear() === b.getFullYear()
+
+const calendarDate = date => {
+  const today = new Date()
+  if (compareDates(date, today)) return 'Today'
+
+  today.setDate(today.getDate() + 1)
+  if (compareDates(date, today)) return 'Tomorrow'
+
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
 export default {
   temperature,
   precipitation,
   humidity,
   hour,
   windSpeed,
-  windDirection
+  windDirection,
+  calendarDate
 }
