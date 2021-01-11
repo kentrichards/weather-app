@@ -46,11 +46,11 @@ body {
 }
 
 .input-btn {
-  @apply h-10 px-3 rounded-md block w-full text-left text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500;
+  @apply h-10 px-3 rounded-md block w-full truncate text-left text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500;
 }
 
 .search-result {
-  @apply flex items-center truncate h-10 w-full px-3 cursor-pointer hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
+  @apply flex items-center h-10 w-full px-3 cursor-pointer hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
 }
 
 .no-results {

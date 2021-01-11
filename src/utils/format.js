@@ -4,6 +4,20 @@ const temperature = temp => {
   return `${Math.round(temp)}${unit}`
 }
 
+// Determines the colour of the temperature in <Hero />
+const temperatureStyle = temp => {
+  const units = localStorage.getItem('units') || 'metric'
+
+  if (
+    (units === 'metric' && temp > 10) ||
+    (units === 'fahrenheit' && temp > 50)
+  ) {
+    return 'text-yellow-300'
+  }
+
+  return 'text-blue-300'
+}
+
 const precipitation = decimal => `${Math.round(decimal * 100)}%`
 
 const humidity = value => `${value}%`
@@ -103,6 +117,7 @@ const calendarDate = date => {
 
 export default {
   temperature,
+  temperatureStyle,
   precipitation,
   humidity,
   hour,

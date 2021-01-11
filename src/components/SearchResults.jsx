@@ -47,7 +47,7 @@ const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
   return (
     <div>
       <hr className="border-gray-300" />
-      <ul className="max-h-72 overflow-y-auto">
+      <ul className="max-h-72">
         {queryResults && queryResults.length !== 0 ? (
           queryResults.map(place => (
             <li key={place.id}>
@@ -56,7 +56,7 @@ const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
                 className="search-result"
                 type="button"
               >
-                {place.place_name}
+                <span className="truncate">{place.place_name}</span>
               </button>
             </li>
           ))

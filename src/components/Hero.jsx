@@ -11,8 +11,7 @@ const Hero = ({ currentWeather }) => {
 
   // Make the data presentable
   const temperature = format.temperature(temp)
-  const temperatureStyle =
-    temperature > 10 ? 'text-yellow-300' : 'text-blue-300'
+  const temperatureStyle = format.temperatureStyle(temp)
 
   const date = new Date(dt * 1000).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -28,12 +27,12 @@ const Hero = ({ currentWeather }) => {
       <div className="h-full flex flex-col justify-between">
         <div className="h-14 flex w-full justify-between ">
           <div>
-            <p className="font-semibold text-2xl">{name}</p>
-            <p className="text-gray-600 text-sm">{date}</p>
+            <p className="font-semibold text-2xl truncate">{name}</p>
+            <p className="text-gray-600 text-sm truncate">{date}</p>
           </div>
           <WeatherIcon
             category={currentWeather.weather[0].main}
-            styles="text-gray-800"
+            styles="text-gray-800 flex-shrink-0"
           />
         </div>
         <div>
