@@ -2,7 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash.debounce'
 
-const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
+const SearchResults = ({
+  searchQuery,
+  setLocation,
+  setLatitude,
+  setLongitude,
+  closeModal
+}) => {
   const [queryResults, setQueryResults] = useState(null)
 
   const fetchResults = async q => {
@@ -31,16 +37,10 @@ const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
   }, [searchQuery, delayedSearch])
 
   const selectLocation = data => {
-    const name = data.text
-    const longName = data.place_name
-    const latitude = data.center[1]
-    const longitude = data.center[0]
+    setLatitude(data.center[1])
+    setLongitude(data.center[0])
+    setLocation(data.place_name)
 
-    localStorage.setItem('name', name)
-    localStorage.setItem('latitude', latitude)
-    localStorage.setItem('longitude', longitude)
-
-    setLocationName(longName)
     closeModal()
   }
 
@@ -71,7 +71,9 @@ const SearchResults = ({ searchQuery, setLocationName, closeModal }) => {
 
 SearchResults.propTypes = {
   searchQuery: PropTypes.string.isRequired,
-  setLocationName: PropTypes.func.isRequired,
+  setLocation: PropTypes.func.isRequired,
+  setLatitude: PropTypes.func.isRequired,
+  setLongitude: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired
 }
 

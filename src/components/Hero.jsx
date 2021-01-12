@@ -20,7 +20,8 @@ const Hero = ({ currentWeather }) => {
   })
 
   // Get the name of the place we are showing weather data for
-  const name = localStorage.getItem('name')
+  const params = new URL(document.location).searchParams
+  const name = params.get('place')
 
   return (
     <div className="p-4 mt-4 w-full h-64 shadow-lg rounded bg-white">

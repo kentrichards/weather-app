@@ -8,7 +8,13 @@ import SearchResults from './SearchResults'
 // Bind the modal to the application's root, for a11y
 Modal.setAppElement('#___gatsby')
 
-const SearchModal = ({ setLocationName, showModal, setShowModal }) => {
+const SearchModal = ({
+  setLocation,
+  setLatitude,
+  setLongitude,
+  showModal,
+  setShowModal
+}) => {
   const textInput = useRef(null)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -39,7 +45,9 @@ const SearchModal = ({ setLocationName, showModal, setShowModal }) => {
         />
         <SearchResults
           searchQuery={searchQuery}
-          setLocationName={setLocationName}
+          setLocation={setLocation}
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
           closeModal={() => setShowModal(false)}
         />
       </div>
@@ -48,7 +56,9 @@ const SearchModal = ({ setLocationName, showModal, setShowModal }) => {
 }
 
 SearchModal.propTypes = {
-  setLocationName: PropTypes.func.isRequired,
+  setLocation: PropTypes.func.isRequired,
+  setLatitude: PropTypes.func.isRequired,
+  setLongitude: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired
 }

@@ -5,7 +5,10 @@ import { Helmet } from 'react-helmet'
 import Search from '../components/Search'
 
 const Index = () => {
+  const [location, setLocation] = useState('')
   const [unitType, setUnitType] = useState('metric')
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
 
   useEffect(() => {
     // Check if the user has previously made a selection
@@ -22,6 +25,24 @@ const Index = () => {
     localStorage.setItem('units', event.target.value)
   }
 
+  const createQueryString = () => {
+    let query = '/weather?'
+
+    // Don't include the unit type if it is the default
+    if (unitType !== 'metric') {
+      query += 'units=imperial&'
+    }
+
+    // Add the name of the location to fetch data for
+    // We only want to send the first part of the name to the next page
+    query += `place=${location.split(',')[0]}&`
+
+    // Add the coordinates of the location
+    query += `lat=${latitude}&lon=${longitude}`
+
+    return query
+  }
+
   return (
     <div className="min-h-screen flex sm:items-center justify-center py-4 sm:py-12 px-4 sm:px-6 lg:px-8">
       <Helmet>
@@ -30,7 +51,12 @@ const Index = () => {
       </Helmet>
       <div className="max-w-md w-full space-y-4">
         <h1 className="title">weather-app</h1>
-        <Search />
+        <Search
+          location={location}
+          setLocation={setLocation}
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
+        />
         <div>
           <h2 className="font-semibold">Units</h2>
           <div className="sm:flex justify-between items-center">
@@ -67,7 +93,7 @@ const Index = () => {
               </div>
             </div>
             <Link
-              to={`/weather?units=${unitType}`}
+              to={createQueryString()}
               className="btn btn-primary mt-4 sm:mt-0 w-full sm:w-auto"
             >
               Continue
