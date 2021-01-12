@@ -9,7 +9,10 @@ const Weather = () => {
   const [hasErrors, setHasErrors] = useState(false)
 
   const fetchData = async () => {
-    const units = localStorage.getItem('units') || 'metric'
+    // Read the unit type from the URL parameters
+    const params = new URL(document.location).searchParams
+    const units = params.get('units') || 'metric'
+
     const latitude = localStorage.getItem('latitude')
     const longitude = localStorage.getItem('longitude')
     const coordinates = `&lat=${latitude}&lon=${longitude}`

@@ -1,12 +1,15 @@
 const temperature = temp => {
-  const units = localStorage.getItem('units') || 'metric'
+  const params = new URL(document.location).searchParams
+  const units = params.get('units') || 'metric'
+
   const unit = units === 'metric' ? '°C' : '°F'
   return `${Math.round(temp)}${unit}`
 }
 
 // Determines the colour of the temperature in <Hero />
 const temperatureStyle = temp => {
-  const units = localStorage.getItem('units') || 'metric'
+  const params = new URL(document.location).searchParams
+  const units = params.get('units') || 'metric'
 
   if (
     (units === 'metric' && temp > 10) ||
@@ -31,7 +34,8 @@ const hour = timestamp =>
     .toLocaleLowerCase()
 
 const windSpeed = value => {
-  const units = localStorage.getItem('units') || 'metric'
+  const params = new URL(document.location).searchParams
+  const units = params.get('units') || 'metric'
 
   // Metric wind speed is provided as m/s, so we need to convert it to km/h
   if (units === 'metric') return `${Math.round(value * 3.6)} km/h`

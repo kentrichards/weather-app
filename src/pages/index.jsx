@@ -8,6 +8,7 @@ const Index = () => {
   const [unitType, setUnitType] = useState('metric')
 
   useEffect(() => {
+    // Check if the user has previously made a selection
     const savedUnits = localStorage.getItem('units')
     if (savedUnits !== 'metric' && savedUnits !== 'imperial') {
       localStorage.setItem('units', unitType)
@@ -66,7 +67,7 @@ const Index = () => {
               </div>
             </div>
             <Link
-              to="/weather"
+              to={`/weather?units=${unitType}`}
               className="btn btn-primary mt-4 sm:mt-0 w-full sm:w-auto"
             >
               Continue
