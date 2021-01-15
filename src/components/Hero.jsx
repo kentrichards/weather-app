@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import format from '../utils/format'
 
-import WeatherIcon from './WeatherIcon'
+import Icons from './Icons'
 
 const Hero = ({ currentWeather }) => {
   // Extract the relevant fields about today's weather
@@ -31,7 +31,7 @@ const Hero = ({ currentWeather }) => {
             <p className="font-semibold text-2xl truncate">{name}</p>
             <p className="text-gray-600 text-sm truncate">{date}</p>
           </div>
-          <WeatherIcon
+          <Icons.Weather
             category={currentWeather.weather[0].main}
             styles="text-gray-800 flex-shrink-0"
           />

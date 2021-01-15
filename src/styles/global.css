@@ -26,6 +26,10 @@ body {
   @apply py-4 w-full flex justify-between items-center hover:bg-white focus:outline-none focus:bg-white;
 }
 
+.icon {
+  @apply h-10 w-10 text-gray-900;
+}
+
 .secondary-icon {
   @apply w-6 h-6 text-gray-400 transform transition-transform;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import CloseIcon from '../icons/close.svg'
+import Icons from './Icons'
 
 const SearchHeading = ({ closeModal }) => (
   <div className="flex justify-between items-center">
@@ -13,7 +13,7 @@ const SearchHeading = ({ closeModal }) => (
       onClick={() => closeModal()}
       className="rounded hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
     >
-      <CloseIcon className="w-6 h-6" />
+      <Icons.Close />
     </button>
   </div>
 )

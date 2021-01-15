@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 
 import format from '../utils/format'
 
+import Icons from './Icons'
 import DataEntry from './DataEntry'
-import ChevronIcon from '../icons/chevron.svg'
-import WeatherIcon from './WeatherIcon'
 
 const AccordionItem = ({ dailyWeather }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,15 +37,13 @@ const AccordionItem = ({ dailyWeather }) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="inline-flex flex-grow">
-          <WeatherIcon category={weather[0].main} />
+          <Icons.Weather category={weather[0].main} />
           <div className="ml-3 text-left">
             <p className="text-sm font-medium">{dayOfTheWeek}</p>
             <p className="text-sm text-gray-500">{calendarDate}</p>
           </div>
         </div>
-        <ChevronIcon
-          className={isOpen ? 'secondary-icon rotate-90' : 'secondary-icon'}
-        />
+        <Icons.Chevron styles={isOpen && 'rotate-90'} />
       </button>
       {isOpen && (
         <div className="py-2 grid grid-cols-2 gap-5 sm:grid-cols-4">
