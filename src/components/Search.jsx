@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import SearchModal from './SearchModal'
 
 const Search = ({ location, setLocation, setLatitude, setLongitude }) => {
   const [showModal, setShowModal] = useState(false)
+  const btnClass = classNames('input-btn', { 'text-gray-900': location })
 
   return (
     <div>
       <button
         type="button"
-        className={location ? 'input-btn text-gray-900' : 'input-btn'}
+        className={btnClass}
         onClick={() => setShowModal(true)}
       >
         {!location ? 'Search for a location' : location}

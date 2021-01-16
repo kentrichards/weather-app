@@ -14,9 +14,10 @@ import AtmosphereIcon from '../icons/wi-fog.svg'
 // UI icons
 import ChevronIcon from '../icons/chevron.svg'
 import CloseIcon from '../icons/close.svg'
+import SwitchIcon from '../icons/switch.svg'
 
 const Weather = ({ category, styles }) => {
-  const classes = classNames(`icon`, styles)
+  const classes = classNames('icon', styles)
 
   switch (category) {
     case 'Clouds':
@@ -47,7 +48,7 @@ Weather.defaultProps = {
 
 // chevron.svg
 const Chevron = ({ styles }) => {
-  const classes = classNames(`secondary-icon`, styles)
+  const classes = classNames('secondary-icon', styles)
   return <ChevronIcon className={classes} />
 }
 
@@ -61,7 +62,7 @@ Chevron.defaultProps = {
 
 // close.svg
 const Close = ({ styles }) => {
-  const classes = classNames(`h-6 w-6`, styles)
+  const classes = classNames('h-6 w-6', styles)
   return <CloseIcon className={classes} />
 }
 
@@ -73,8 +74,23 @@ Close.defaultProps = {
   styles: ''
 }
 
+// switch.svg
+const Switch = ({ styles }) => {
+  const classes = classNames('w-4 h-4 ml-1', styles)
+  return <SwitchIcon className={classes} />
+}
+
+Switch.propTypes = {
+  styles: PropTypes.string
+}
+
+Switch.defaultProps = {
+  styles: ''
+}
+
 export default {
   Weather,
   Chevron,
-  Close
+  Close,
+  Switch
 }

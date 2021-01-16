@@ -13,7 +13,7 @@ const temperatureStyle = temp => {
 
   if (
     (units === 'metric' && temp > 10) ||
-    (units === 'fahrenheit' && temp > 50)
+    (units === 'imperial' && temp > 50)
   ) {
     return 'text-yellow-300'
   }
